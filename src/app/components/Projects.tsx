@@ -38,18 +38,43 @@ export function Projects() {
   ];
 
   return (
-    <section id="projects" className="w-full py-32 bg-white dark:bg-[#030614]">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="projects" className="w-full py-32 bg-white dark:bg-[#030614] relative overflow-hidden">
+      {/* Cinematic RED Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-red-500/5 to-transparent pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-red-600/10 rounded-full blur-[150px] pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div className="max-w-2xl">
-            <h2 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-white mb-4">Featured Work</h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400">
+            <motion.h2 
+              className="text-4xl font-bold tracking-tight text-slate-900 dark:text-white mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              Featured Work
+            </motion.h2>
+            <motion.p 
+              className="text-lg text-slate-600 dark:text-slate-400"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+            >
               A selection of enterprise applications and AI systems I've built to solve complex, real-world problems.
-            </p>
+            </motion.p>
           </div>
-          <a href="#" className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-medium hover:gap-3 transition-all">
-            View All Projects <ArrowRight size={18} />
-          </a>
+          <motion.a 
+            href="#" 
+            className="inline-flex items-center gap-2 text-red-600 dark:text-red-400 font-medium hover:gap-3 transition-all group"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            View All Projects 
+            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+          </motion.a>
         </div>
 
         <div className="flex flex-col gap-24">
@@ -63,14 +88,32 @@ export function Projects() {
               className={`flex flex-col ${idx % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 lg:gap-20 items-center`}
             >
               <div className="w-full lg:w-1/2">
-                <div className="relative rounded-3xl overflow-hidden bg-slate-100 dark:bg-[#0a0f1c] aspect-[4/3] border border-slate-200 dark:border-white/10 group shadow-2xl">
-                  <div className="absolute inset-0 bg-slate-900/10 dark:bg-white/5 z-10 group-hover:bg-transparent transition-colors duration-500" />
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                  />
-                </div>
+                <Tilt
+                  tiltMaxAngleX={5}
+                  tiltMaxAngleY={5}
+                  glareEnable={true}
+                  glareMaxOpacity={0.2}
+                  glareColor="#ef4444"
+                  glareBorderRadius="24px"
+                  scale={1.05}
+                >
+                  <div className="relative rounded-3xl overflow-hidden bg-slate-100 dark:bg-[#0a0f1c] aspect-[4/3] border-2 border-red-200 dark:border-red-500/20 group shadow-2xl shadow-red-500/10 hover:shadow-red-500/20 transition-shadow duration-500">
+                    {/* Overlay gradient on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-red-900/50 via-transparent to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    
+                    {/* Image with zoom effect */}
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                    />
+                    
+                    {/* Floating badge */}
+                    <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-red-500/90 backdrop-blur-sm text-white text-xs font-bold shadow-lg z-20">
+                      Featured
+                    </div>
+                  </div>
+                </Tilt>
               </div>
               
               <div className="w-full lg:w-1/2 flex flex-col gap-6">
