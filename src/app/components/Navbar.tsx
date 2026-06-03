@@ -130,7 +130,7 @@ export function Navbar() {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="absolute top-full left-0 right-0 bg-white dark:bg-[#05081c] border-b border-slate-200 dark:border-white/10 shadow-xl py-6 px-6 flex flex-col gap-6 md:hidden"
+          className="absolute top-full left-0 right-0 bg-white/90 dark:bg-slate-950/90 backdrop-blur-xl border-b border-red-200/30 dark:border-red-500/20 shadow-xl py-6 px-6 flex flex-col gap-6 md:hidden"
         >
           <ul className="flex flex-col gap-4 text-base font-medium">
             {navLinks.map((link) => (
@@ -138,7 +138,7 @@ export function Navbar() {
                 <a
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block text-slate-600 dark:text-slate-300"
+                  className="block text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400 transition-colors"
                 >
                   {link.name}
                 </a>
