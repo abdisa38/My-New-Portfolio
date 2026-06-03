@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense } from "react";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
@@ -15,24 +15,28 @@ import { CustomCursor } from "./components/CustomCursor";
 
 export default function App() {
   useEffect(() => {
-    // Smooth scroll behavior
-    const lenis = async () => {
-      const Lenis = (await import('lenis')).default;
-      const lenisInstance = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        smoothWheel: true,
-      });
+    // Smooth scroll behavior - wrapped in try/catch to prevent errors
+    const initLenis = async () => {
+      try {
+        const Lenis = (await import('lenis')).default;
+        const lenisInstance = new Lenis({
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smoothWheel: true,
+        });
 
-      function raf(time: number) {
-        lenisInstance.raf(time);
+        function raf(time: number) {
+          lenisInstance.raf(time);
+          requestAnimationFrame(raf);
+        }
+
         requestAnimationFrame(raf);
+      } catch (error) {
+        console.log('Lenis loading skipped:', error);
       }
-
-      requestAnimationFrame(raf);
     };
 
-    lenis();
+    initLenis();
   }, []);
 
   return (
