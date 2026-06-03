@@ -7,10 +7,16 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
+      
+      // Calculate scroll progress
+      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (window.scrollY / windowHeight) * 100;
+      setScrollProgress(scrolled);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -31,10 +37,15 @@ export function Navbar() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-white/70 dark:bg-slate-950/70 backdrop-blur-xl border-b border-slate-200/50 dark:border-white/5 py-3 shadow-lg shadow-slate-900/5 dark:shadow-black/20"
+          ? "bg-white/70 dark:bg-slate-950/80 backdrop-blur-2xl border-b border-red-200/30 dark:border-red-500/20 py-3 shadow-lg shadow-red-900/10 dark:shadow-red-500/10"
           : "bg-transparent py-5"
       }`}
     >
+      {/* Scroll Progress Bar */}
+      <motion.div
+        className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-red-600 via-red-500 to-red-400 shadow-[0_0_10px_rgba(239,68,68,0.5)]"
+        style={{ width: `${scrollProgress}%` }}
+      />
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <motion.a 
           href="#" 
