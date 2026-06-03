@@ -30,54 +30,93 @@ export function Hero() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="flex flex-col gap-8"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-sm font-medium border border-blue-500/20 w-max">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+          <motion.div 
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-500/10 text-red-600 dark:text-red-400 text-sm font-medium border border-red-500/20 w-max relative overflow-hidden group"
+            whileHover={{ scale: 1.05 }}
+          >
+            <span className="relative flex h-2 w-2 z-10">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
             </span>
-            Available for new opportunities
-          </div>
+            <span className="relative z-10">Available for new opportunities</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-red-500/20 to-transparent shimmer" />
+          </motion.div>
 
-          <h1 className="text-5xl lg:text-7xl font-bold tracking-tight text-slate-900 dark:text-white leading-[1.1]">
+          <motion.h1 
+            className="text-5xl lg:text-7xl font-bold tracking-tight text-slate-900 dark:text-white leading-[1.1]"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+          >
             Building Real-World <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 dark:from-blue-400 dark:to-cyan-300">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-rose-500 to-red-600 dark:from-red-400 dark:via-rose-400 dark:to-red-400 animate-gradient bg-[length:200%_auto] neon-text">
               Digital Solutions
             </span>
-          </h1>
+          </motion.h1>
 
-          <p className="text-lg lg:text-xl text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed">
+          <motion.p 
+            className="text-lg lg:text-xl text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+          >
             I design, develop, and deploy scalable web applications, AI-powered systems, and enterprise solutions that make an impact.
-          </p>
+          </motion.p>
 
-          <div className="flex flex-wrap items-center gap-4">
-            <a
+          <motion.div 
+            className="flex flex-wrap items-center gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+          >
+            <motion.a
               href="#projects"
-              className="inline-flex items-center justify-center gap-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-6 py-3 rounded-xl font-medium hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors"
+              className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-red-600 to-rose-600 text-white px-6 py-3 rounded-xl font-medium hover:from-red-700 hover:to-rose-700 transition-all shadow-lg shadow-red-500/30 hover:shadow-xl hover:shadow-red-500/40 relative overflow-hidden group"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
             >
-              View Projects
-              <ArrowRight size={18} />
-            </a>
-            <a
+              <span className="relative z-10">View Projects</span>
+              <ArrowRight size={18} className="relative z-10 group-hover:translate-x-1 transition-transform" />
+              <div className="absolute inset-0 bg-gradient-to-r from-rose-600 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+            </motion.a>
+            <motion.a
               href="#"
-              className="inline-flex items-center justify-center gap-2 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white px-6 py-3 rounded-xl font-medium hover:bg-slate-50 dark:hover:bg-white/10 transition-colors"
+              className="inline-flex items-center justify-center gap-2 bg-white dark:bg-white/5 border-2 border-red-200 dark:border-red-500/30 text-slate-900 dark:text-white px-6 py-3 rounded-xl font-medium hover:bg-red-50 dark:hover:bg-red-500/10 hover:border-red-300 dark:hover:border-red-500/50 transition-all"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
             >
               <Download size={18} />
               Download Resume
-            </a>
-          </div>
+            </motion.a>
+          </motion.div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-slate-200 dark:border-white/10">
+          <motion.div 
+            className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-slate-200 dark:border-red-500/20"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8, duration: 0.8 }}
+          >
             {stats.map((stat, i) => (
-              <div key={i} className="flex flex-col gap-1">
-                <span className="text-2xl font-bold text-slate-900 dark:text-white">
-                  {stat.value}
-                </span>
+              <motion.div 
+                key={i} 
+                className="flex flex-col gap-1 group cursor-pointer"
+                whileHover={{ scale: 1.05, y: -5 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl font-bold text-slate-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
+                    {stat.value}
+                  </span>
+                  <span className="text-red-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                    {stat.icon}
+                  </span>
+                </div>
                 <span className="text-sm text-slate-500 dark:text-slate-400 font-medium">
                   {stat.label}
                 </span>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </motion.div>
 
         <motion.div
