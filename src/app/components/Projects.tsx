@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import { Github, ExternalLink, ArrowRight } from "lucide-react";
+import Tilt from 'react-parallax-tilt';
 
 export function Projects() {
   const projects = [
