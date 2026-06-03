@@ -125,68 +125,110 @@ export function Hero() {
           transition={{ duration: 1, delay: 0.2 }}
           className="relative hidden lg:block h-[600px]"
         >
-          {/* Floating UI Elements */}
-          <motion.div
-            animate={{ y: [-10, 10, -10] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-[10%] left-[10%] z-20 bg-white dark:bg-[#0a0f1c] p-4 rounded-2xl shadow-2xl border border-slate-200 dark:border-white/10 flex items-center gap-4"
+          {/* Floating UI Elements with 3D Tilt */}
+          <Tilt
+            tiltMaxAngleX={10}
+            tiltMaxAngleY={10}
+            glareEnable={true}
+            glareMaxOpacity={0.2}
+            glareColor="#ef4444"
+            glareBorderRadius="16px"
+            className="absolute top-[10%] left-[10%] z-20"
           >
-            <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-500">
-              <Code2 size={20} />
-            </div>
-            <div>
-              <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">Frontend</p>
-              <p className="text-sm font-bold text-slate-900 dark:text-white">React & Next.js</p>
-            </div>
-          </motion.div>
+            <motion.div
+              animate={{ y: [-10, 10, -10] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="bg-white dark:bg-[#0a0f1c] p-4 rounded-2xl shadow-2xl border border-red-200 dark:border-red-500/20 flex items-center gap-4"
+            >
+              <div className="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center text-red-500">
+                <Code2 size={20} />
+              </div>
+              <div>
+                <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">Frontend</p>
+                <p className="text-sm font-bold text-slate-900 dark:text-white">React & Next.js</p>
+              </div>
+            </motion.div>
+          </Tilt>
 
-          <motion.div
-            animate={{ y: [10, -10, 10] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute bottom-[20%] right-[0%] z-20 bg-white dark:bg-[#0a0f1c] p-4 rounded-2xl shadow-2xl border border-slate-200 dark:border-white/10 flex items-center gap-4"
+          <Tilt
+            tiltMaxAngleX={10}
+            tiltMaxAngleY={10}
+            glareEnable={true}
+            glareMaxOpacity={0.2}
+            glareColor="#ef4444"
+            glareBorderRadius="16px"
+            className="absolute bottom-[20%] right-[0%] z-20"
           >
-            <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-500">
-              <Database size={20} />
-            </div>
-            <div>
-              <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">Backend</p>
-              <p className="text-sm font-bold text-slate-900 dark:text-white">Node & MongoDB</p>
-            </div>
-          </motion.div>
+            <motion.div
+              animate={{ y: [10, -10, 10] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              className="bg-white dark:bg-[#0a0f1c] p-4 rounded-2xl shadow-2xl border border-red-200 dark:border-red-500/20 flex items-center gap-4"
+            >
+              <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-500">
+                <Database size={20} />
+              </div>
+              <div>
+                <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">Backend</p>
+                <p className="text-sm font-bold text-slate-900 dark:text-white">Node & MongoDB</p>
+              </div>
+            </motion.div>
+          </Tilt>
 
-          {/* Main Visual */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-cyan-400/20 rounded-[2.5rem] blur-2xl transform rotate-3" />
-          <div className="absolute inset-0 bg-slate-900 dark:bg-[#0a0f1c] rounded-[2rem] border border-slate-800 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col">
-            <div className="h-12 border-b border-white/10 flex items-center px-4 gap-2 bg-slate-800/50 dark:bg-white/5">
-              <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                <div className="w-3 h-3 rounded-full bg-green-500/80" />
+          {/* Main Visual with Enhanced RED Theme */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-red-600/30 to-rose-400/30 rounded-[2.5rem] blur-2xl transform rotate-3" />
+          <Tilt
+            tiltMaxAngleX={5}
+            tiltMaxAngleY={5}
+            glareEnable={true}
+            glareMaxOpacity={0.3}
+            glareColor="#ef4444"
+            glareBorderRadius="32px"
+            className="h-full"
+          >
+            <div className="absolute inset-0 bg-slate-900 dark:bg-[#0a0f1c] rounded-[2rem] border-2 border-red-500/30 dark:border-red-500/20 shadow-2xl shadow-red-500/20 overflow-hidden flex flex-col relative">
+              {/* Holographic Border Effect */}
+              <div className="absolute inset-0 rounded-[2rem] pointer-events-none">
+                <div className="absolute inset-0 rounded-[2rem] holographic-border opacity-50" />
               </div>
-              <div className="mx-auto bg-slate-900/50 dark:bg-black/50 px-3 py-1 rounded-md text-xs text-slate-400 font-mono flex items-center gap-2">
-                <Terminal size={12} />
-                abdisa@portfolio:~
+              
+              <div className="h-12 border-b border-red-500/20 flex items-center px-4 gap-2 bg-slate-800/50 dark:bg-red-950/20 backdrop-blur relative z-10">
+                <div className="flex gap-1.5">
+                  <div className="w-3 h-3 rounded-full bg-red-500/80 shadow-[0_0_8px_rgba(239,68,68,0.6)]" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                  <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                </div>
+                <div className="mx-auto bg-slate-900/50 dark:bg-black/50 px-3 py-1 rounded-md text-xs text-slate-400 font-mono flex items-center gap-2 border border-red-500/20">
+                  <Terminal size={12} className="text-red-500" />
+                  abdisa@portfolio:~
+                </div>
+              </div>
+              <div className="p-6 font-mono text-sm text-slate-300 flex-1 overflow-hidden bg-[#0d1117] relative">
+                <div className="absolute top-0 left-0 w-8 h-full border-r border-red-500/10 bg-[#0d1117] text-right pr-2 pt-6 text-slate-600 select-none hidden sm:block">
+                  1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12
+                </div>
+                <div className="pl-0 sm:pl-10">
+                  <p className="text-purple-400">const <span className="text-red-400">developer</span> = {'{'}</p>
+                  <p className="pl-4">name: <span className="text-green-400">'Abdisa Awel Tahir'</span>,</p>
+                  <p className="pl-4">role: <span className="text-green-400">'Full-Stack Engineer'</span>,</p>
+                  <p className="pl-4">skills: ['<span className="text-yellow-300">React</span>', '<span className="text-yellow-300">Next.js</span>', '<span className="text-yellow-300">Node</span>'],</p>
+                  <p className="pl-4">passionateAbout: <span className="text-green-400">'Building AI systems'</span></p>
+                  <p>{'};'}</p>
+                  <br/>
+                  <p className="text-purple-400">async function <span className="text-red-400">init</span>() {'{'}</p>
+                  <p className="pl-4 text-slate-500">// Deploying next big thing...</p>
+                  <p className="pl-4">await developer.<span className="text-red-300">build</span>(<span className="text-green-400">'Enterprise App'</span>);</p>
+                  <p>{'}'}</p>
+                </div>
+                
+                {/* Scan Line Effect */}
+                <motion.div
+                  className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-red-500/50 to-transparent"
+                  animate={{ top: ['0%', '100%'] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                />
               </div>
             </div>
-            <div className="p-6 font-mono text-sm text-slate-300 flex-1 overflow-hidden bg-[#0d1117] relative">
-              <div className="absolute top-0 left-0 w-8 h-full border-r border-white/5 bg-[#0d1117] text-right pr-2 pt-6 text-slate-600 select-none hidden sm:block">
-                1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12
-              </div>
-              <div className="pl-0 sm:pl-10">
-                <p className="text-purple-400">const <span className="text-blue-400">developer</span> = {'{'}</p>
-                <p className="pl-4">name: <span className="text-green-400">'Abdisa Awel Tahir'</span>,</p>
-                <p className="pl-4">role: <span className="text-green-400">'Full-Stack Engineer'</span>,</p>
-                <p className="pl-4">skills: ['<span className="text-yellow-300">React</span>', '<span className="text-yellow-300">Next.js</span>', '<span className="text-yellow-300">Node</span>'],</p>
-                <p className="pl-4">passionateAbout: <span className="text-green-400">'Building AI systems'</span></p>
-                <p>{'};'}</p>
-                <br/>
-                <p className="text-purple-400">async function <span className="text-blue-400">init</span>() {'{'}</p>
-                <p className="pl-4 text-slate-500">// Deploying next big thing...</p>
-                <p className="pl-4">await developer.<span className="text-blue-300">build</span>(<span className="text-green-400">'Enterprise App'</span>);</p>
-                <p>{'}'}</p>
-              </div>
-            </div>
-          </div>
+          </Tilt>
         </motion.div>
       </div>
     </section>
