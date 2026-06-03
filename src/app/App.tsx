@@ -45,8 +45,10 @@ export default function App() {
         {/* Custom Cursor */}
         <CustomCursor />
         
-        {/* 3D Particle Background */}
-        <ParticleBackground />
+        {/* 3D Particle Background - Wrapped in Suspense */}
+        <Suspense fallback={null}>
+          <ParticleBackground />
+        </Suspense>
         
         {/* Ambient Background Effects - CINEMATIC RED */}
         <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
