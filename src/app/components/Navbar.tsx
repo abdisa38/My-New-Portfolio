@@ -25,20 +25,28 @@ export function Navbar() {
   ];
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <motion.header
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-white/80 dark:bg-[#030614]/80 backdrop-blur-md border-b border-slate-200 dark:border-white/10 py-3"
+          ? "bg-white/70 dark:bg-slate-950/70 backdrop-blur-xl border-b border-slate-200/50 dark:border-white/5 py-3 shadow-lg shadow-slate-900/5 dark:shadow-black/20"
           : "bg-transparent py-5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <a href="#" className="text-xl font-bold tracking-tighter flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white">
-            A
+        <motion.a 
+          href="#" 
+          className="text-xl font-bold tracking-tighter flex items-center gap-2 group"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-500 flex items-center justify-center text-white shadow-lg shadow-blue-500/30 dark:shadow-blue-500/20 group-hover:shadow-xl group-hover:shadow-blue-500/40 transition-all duration-300 group-hover:rotate-3">
+            <span className="font-bold text-lg">A</span>
           </div>
-          <span>Abdisa.</span>
-        </a>
+          <span className="bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">Abdisa.</span>
+        </motion.a>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
