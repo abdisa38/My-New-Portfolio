@@ -12,7 +12,8 @@ export function Projects() {
       tags: ["Next.js", "TypeScript", "OpenAI", "Prisma"],
       metrics: ["Reduced research time by 80%", "Processed 10k+ queries"],
       github: "#",
-      demo: "#"
+      demo: "#",
+      accentColor: "red"
     },
     {
       title: "MWU Laptop Exit Verification System",
@@ -21,7 +22,8 @@ export function Projects() {
       tags: ["React", "Node.js", "MongoDB", "QR Integration"],
       metrics: ["Secured 5,000+ devices", "Zero unauthorized exits"],
       github: "#",
-      demo: "#"
+      demo: "#",
+      accentColor: "rose"
     },
     {
       title: "CTC Learning Management System",
@@ -30,7 +32,8 @@ export function Projects() {
       tags: ["MERN Stack", "Redux", "AWS S3", "Socket.io"],
       metrics: ["Active 2,000+ users", "99.9% Uptime"],
       github: "#",
-      demo: "#"
+      demo: "#",
+      accentColor: "red"
     }
   ];
 
