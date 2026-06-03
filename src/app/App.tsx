@@ -12,7 +12,6 @@ import { Contact } from "./components/Contact";
 import { Navbar } from "./components/Navbar";
 import { ParticleBackground } from "./components/3d/ParticleBackground";
 import { CustomCursor } from "./components/CustomCursor";
-import "../styles/globals.css";
 
 export default function App() {
   useEffect(() => {
