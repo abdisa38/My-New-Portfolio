@@ -135,6 +135,6 @@ export function Navbar() {
           </ul>
         </motion.div>
       )}
-    </header>
+    </motion.header>
   );
 }
