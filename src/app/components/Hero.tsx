@@ -1,22 +1,26 @@
 import React from "react";
 import { motion } from "motion/react";
-import { ArrowRight, Download, Terminal, Code2, Database, Layout } from "lucide-react";
+import { ArrowRight, Download, Terminal, Code2, Database, Sparkles, Zap } from "lucide-react";
+import Tilt from 'react-parallax-tilt';
 
 export function Hero() {
   const stats = [
-    { label: "Years Experience", value: "2+" },
-    { label: "Repositories", value: "67+" },
-    { label: "Contributions", value: "1450+" },
-    { label: "Internship", value: "Completed" },
+    { label: "Years Experience", value: "2+", icon: <Sparkles size={16} /> },
+    { label: "Repositories", value: "67+", icon: <Code2 size={16} /> },
+    { label: "Contributions", value: "1450+", icon: <Zap size={16} /> },
+    { label: "Internship", value: "Completed", icon: <Database size={16} /> },
   ];
 
   return (
     <section className="relative min-h-screen w-full flex items-center justify-center pt-20 overflow-hidden">
-      {/* Background Effects */}
+      {/* Cinematic RED Background Effects */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-[20%] left-[20%] w-[40vw] h-[40vw] bg-blue-600/20 rounded-full blur-[120px] mix-blend-screen opacity-50 dark:opacity-30" />
-        <div className="absolute bottom-[10%] right-[10%] w-[30vw] h-[30vw] bg-indigo-500/20 rounded-full blur-[100px] mix-blend-screen opacity-50 dark:opacity-30" />
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1605379399642-870262d3d051?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBtb2Rlcm4lMjBkZXZlbG9wZXIlMjB3b3Jrc3BhY2UlMjBzZXR1cCUyMGNvZGV8ZW58MXx8fHwxNzgwMzU0MTQ2fDA&ixlib=rb-4.1.0&q=80&w=1080')] bg-cover bg-center opacity-5 dark:opacity-[0.03] mix-blend-overlay" />
+        <div className="absolute top-[20%] left-[20%] w-[40vw] h-[40vw] bg-red-600/30 rounded-full blur-[120px] mix-blend-screen opacity-60 dark:opacity-40 animate-pulse" />
+        <div className="absolute bottom-[10%] right-[10%] w-[30vw] h-[30vw] bg-rose-500/25 rounded-full blur-[100px] mix-blend-screen opacity-50 dark:opacity-35 animate-pulse" style={{animationDelay: '1.5s'}} />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-red-500/5 to-transparent" />
+        
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(239,68,68,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(239,68,68,0.05)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 z-10 w-full grid lg:grid-cols-2 gap-12 items-center">
