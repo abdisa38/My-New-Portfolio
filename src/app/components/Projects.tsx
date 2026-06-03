@@ -117,38 +117,85 @@ export function Projects() {
               </div>
               
               <div className="w-full lg:w-1/2 flex flex-col gap-6">
-                <h3 className="text-3xl font-bold text-slate-900 dark:text-white">{project.title}</h3>
-                <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                <motion.h3 
+                  className="text-3xl font-bold text-slate-900 dark:text-white"
+                  initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                >
+                  {project.title}
+                </motion.h3>
+                <motion.p 
+                  className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed"
+                  initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 }}
+                >
                   {project.description}
-                </p>
+                </motion.p>
                 
-                <div className="flex flex-wrap gap-2 py-2">
+                <motion.div 
+                  className="flex flex-wrap gap-2 py-2"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 }}
+                >
                   {project.tags.map(tag => (
-                    <span key={tag} className="px-3 py-1 bg-blue-50 dark:bg-blue-500/10 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium border border-blue-200 dark:border-blue-500/20">
+                    <motion.span 
+                      key={tag} 
+                      className="px-3 py-1 bg-red-50 dark:bg-red-500/10 text-red-700 dark:text-red-300 rounded-full text-sm font-medium border border-red-200 dark:border-red-500/20 hover:bg-red-100 dark:hover:bg-red-500/20 transition-colors cursor-default"
+                      whileHover={{ scale: 1.05, y: -2 }}
+                    >
                       {tag}
-                    </span>
+                    </motion.span>
                   ))}
-                </div>
+                </motion.div>
 
-                <div className="grid grid-cols-2 gap-4 py-4 border-y border-slate-200 dark:border-white/10 my-2">
+                <motion.div 
+                  className="grid grid-cols-2 gap-4 py-4 border-y border-slate-200 dark:border-red-500/20 my-2"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5 }}
+                >
                   {project.metrics.map((metric, i) => (
                     <div key={i} className="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-300">
-                      <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_6px_rgba(239,68,68,0.6)]" />
                       {metric}
                     </div>
                   ))}
-                </div>
+                </motion.div>
 
-                <div className="flex items-center gap-4 pt-2">
-                  <a href={project.demo} className="inline-flex items-center gap-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-6 py-3 rounded-xl font-medium hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors">
-                    <ExternalLink size={18} />
-                    Live Demo
-                  </a>
-                  <a href={project.github} className="inline-flex items-center gap-2 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white px-6 py-3 rounded-xl font-medium hover:bg-slate-50 dark:hover:bg-white/10 transition-colors">
+                <motion.div 
+                  className="flex items-center gap-4 pt-2"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.6 }}
+                >
+                  <motion.a 
+                    href={project.demo} 
+                    className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-rose-600 text-white px-6 py-3 rounded-xl font-medium hover:from-red-700 hover:to-rose-700 transition-all shadow-lg shadow-red-500/30 hover:shadow-xl hover:shadow-red-500/40 relative overflow-hidden group"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <ExternalLink size={18} className="relative z-10" />
+                    <span className="relative z-10">Live Demo</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-rose-600 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </motion.a>
+                  <motion.a 
+                    href={project.github} 
+                    className="inline-flex items-center gap-2 bg-white dark:bg-white/5 border-2 border-red-200 dark:border-red-500/30 text-slate-900 dark:text-white px-6 py-3 rounded-xl font-medium hover:bg-red-50 dark:hover:bg-red-500/10 hover:border-red-300 dark:hover:border-red-500/50 transition-all"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
                     <Github size={18} />
                     Source
-                  </a>
-                </div>
+                  </motion.a>
+                </motion.div>
               </div>
             </motion.div>
           ))}
